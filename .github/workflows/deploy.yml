@@ -30,6 +30,34 @@ jobs:
         working-directory: my-portfolio
         run: npm ci
 
+      - name: Build (force base for GitHub Pages)
+        working-directory: my-portfolio
+        run: npm run build -- --base=/dance-portfolio/
+
+      - name: Copy index.html to 404.html (SPA fallback)
+        working-directory: my-portfolio/dist
+        run: cp index.html 404.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: my-portfolio/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Install dependencies
+        working-directory: my-portfolio
+        run: npm ci
+
       - name: Build
         working-directory: my-portfolio
         run: npm run build
