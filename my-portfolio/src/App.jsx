@@ -75,7 +75,7 @@ export default function App() {
     const unique = Array.from(new Set(items.map((i) => i.collection))).sort();
     // Only hide the "website" collection if there are others to choose from
     if (unique.length > 1) {
-      return unique.filter((c) => c?.toLowerCase() !== "website");
+      return unique.filter((c) => c?.toLowerCase() !== "website" && c?.toLowerCase() !== "assets");
     }
     return unique; // keep as-is if it's the only one
   }, [items]);
