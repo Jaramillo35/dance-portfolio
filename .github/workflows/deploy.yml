@@ -30,15 +30,15 @@ jobs:
         working-directory: my-portfolio
         run: npm ci
 
-      - name: Build (force base for GitHub Pages)
+      - name: Build
         working-directory: my-portfolio
-        run: npm run build -- --base=/dance-portfolio/
+        run: npm run build
 
       - name: Copy index.html to 404.html (SPA fallback)
         working-directory: my-portfolio/dist
         run: cp index.html 404.html
 
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: my-portfolio/dist
