@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import logoImage from "./assets/logo.png";
 
 /** Auto-import all images from src/assets/website */
 function useGalleryImages() {
@@ -133,7 +134,7 @@ export default function App() {
           <div className="flex-1 flex flex-col">
             <div className="mb-8">
               <img 
-                src="/src/assets/logo.png" 
+                src={logoImage}
                 alt="Martín Jaramillo" 
                 className="w-full h-auto"
               />
@@ -156,7 +157,7 @@ export default function App() {
       <section id="home" className="mx-auto max-w-7xl px-6 py-8 lg:hidden">
         <div className="text-center mb-8">
           <img 
-            src="/src/assets/logo.png" 
+            src={logoImage}
             alt="Martín Jaramillo" 
             className="w-full h-auto mx-auto mb-4"
           />
