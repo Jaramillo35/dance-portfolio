@@ -1,0 +1,10 @@
+[build]
+  base = "my-portfolio"
+  command = "npm run build"
+  publish = "dist"
+
+# SPA fallback (harmless even if you don't use client routes)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
