@@ -18,7 +18,7 @@ function useGalleryImages() {
       const url = mod.default || mod;
       return { name, url, collection: folder || "Portfolio" };
     })
-    .filter(item => !item.url.includes('logo.png')) // Filter out logo from gallery
+    .filter(item => !item.url.includes('logo.png') && !item.name.includes('logo')) // Filter out logo from gallery
     .sort((a, b) => a.name.localeCompare(a.name, undefined, { numeric: true }));
 
   return images;
